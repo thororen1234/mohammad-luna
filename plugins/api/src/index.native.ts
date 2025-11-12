@@ -154,8 +154,6 @@ export const stopServer = async () => {
 
 function notifyWebSocketClients(field: string, value: any) {
     if (!wss) return;
-    const previousValue = fields[field];
-    if (previousValue === value) return;
 
     for (const [ws, sub] of wsSubscriptions.entries()) {
         if (ws.readyState !== ws.OPEN) continue;
